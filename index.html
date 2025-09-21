@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ICACS 2026 - International Conference on Advancements in Cyber Security</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}html,body{font-family:'Poppins',sans-serif;background:#0d0d0d;color:#fff;line-height:1.6;transition:all .4s ease;}body.light{background:#f9f9f9;color:#222;}a{text-decoration:none;color:inherit;}h1,h2,h3,h4{font-weight:600;}html{scroll-behavior:smooth;}
+/* nav{display:flex;justify-content:space-between;align-items:center;padding:15px 50px;background:#111;position:sticky;top:0;z-index:9999;transition:all .4s ease;border-bottom:1px solid rgba(255,255,255,.1);}body.light nav{background:#fff;border-color:#eee;}nav h2{color:#00ffcc;font-size:1.6rem;}nav ul{list-style:none;display:flex;gap:25px;}nav ul li a{color:#f1f1f1;font-weight:500;position:relative;transition:.3s;}nav ul li a::after{content:'';position:absolute;width:0;height:2px;bottom:-4px;left:0;background:#00ffcc;transition:.3s;}nav ul li a:hover::after{width:100%;}body.light nav ul li a{color:#222;}#theme-toggle{cursor:pointer;font-size:1.2rem;margin-left:20px;color:#00ffcc;transition:.3s}.menu-toggle{display:none;cursor:pointer;font-size:1.5rem;color:#00ffcc;} */
+/* NAVBAR BASE */
+nav {display: flex;justify-content: space-between;align-items: center;padding: 15px 50px;background: #111;position: sticky;top: 0;z-index: 9999;transition: all 0.4s ease;border-bottom: 1px solid rgba(255,255,255,0.1);}
+/* LIGHT THEME NAV */
+body.light nav {background: #fff;border-color: #eee;}
+/* NAVBAR BLUR ON SCROLL */
+nav.scrolled {
+  background: rgba(17, 17, 17, 0.6); /* semi-transparent dark bg */
+  backdrop-filter: blur(10px); /* smooth blur effect */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+/* LOGO */
+nav h2 {color: #00ffcc;font-size: 1.6rem;}
+
+/* NAV LINKS */
+nav ul {list-style: none;display: flex;gap: 25px;}
+nav ul li a {color: #f1f1f1;font-weight: 500;position: relative;transition: .3s;}
+nav ul li a::after {content: '';position: absolute;width: 0;height: 2px;bottom: -4px;left: 0;background: #00ffcc;transition: .3s;}
+nav ul li a:hover::after {width: 100}
+/* LIGHT THEME LINKS */
+body.light nav ul li a {color: #222;}
+/* THEME TOGGLE */
+#theme-toggle {cursor: pointer;font-size: 1.2rem;margin-left: 20px;color: #00ffcc;transition: .3s;}
+/* MENU TOGGLE */
+.menu-toggle {display: none;cursor: pointer;font-size: 1.5rem;color: #00ffcc;}
+/* MOBILE RESPONSIVE NAV */
+@media (max-width: 768px) {
+  /* Show menu toggle button */
+  .menu-toggle { display: block; }
+  /* Full-screen mobile nav overlay */
+  nav.active ul {position: fixed;left: 0;top: 60px;right: 0;background: rgba(17,17,17,0.98);padding: 18px;display: flex;flex-direction: column;gap: 12px;z-index: 9998;max-height: calc(100vh - 60px);overflow-y: auto;}
+  nav ul {width: 100%;box-sizing: border-box;}
+  nav ul li {width: 100%;}
+}
+.hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;background:#000;} .carousel{position:absolute;width:100%;height:100%;top:0;left:0;} .carousel-slide{position:absolute;width:100%;height:100%;top:0;left:0;opacity:0;z-index:0;animation:fadeSlides 16s infinite;} .carousel-slide:nth-child(1){animation-delay:0s;} .carousel-slide:nth-child(2){animation-delay:4s;} .carousel-slide:nth-child(3){animation-delay:8s;} .carousel-slide:nth-child(4){animation-delay:12s;} .carousel-slide img{width:100%;height:100%;object-fit:cover;filter:brightness(50%);} @keyframes fadeSlides{0%,20%{opacity:1;}25%,95%{opacity:0;}100%{opacity:0;}}
+.hero-content{position:relative;z-index:2;color:#fff;animation:fadeIn 2s ease;padding:0 10px;} .hero h1{font-size:3rem;background:linear-gradient(45deg,#00ffcc,#ff0066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;} .hero p{margin-top:15px;font-size:1.2rem;color:#ccc;} .typewriter{overflow:hidden;white-space:nowrap;border-right:2px solid #00ffcc;animation:typing 4s steps(50,end),blink .8s infinite;} @keyframes typing{from{width:0}to{width:100%}} @keyframes blink{50%{border-color:transparent}} @keyframes fadeIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+section{padding:60px 6%;} .section-title{text-align:center;margin-bottom:40px;font-size:2.2rem;background:linear-gradient(45deg,#00ffcc,#ff0066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+/* TRACKS */
+.tracks { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; padding: 0 40px; }
+.track { position: relative; border-radius: 25px; padding: 60px 40px; text-align: left; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); background: #111; box-shadow: 0 6px 18px rgba(0,0,0,0.4); overflow: hidden; }
+.track:hover { transform: translateY(-15px) scale(1.05); box-shadow: 0 12px 28px rgba(0,0,0,0.55); }
+.track .bg-circle { position: absolute; top: -40px; right: -40px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle at center, rgba(255,0,102,0.25), transparent 70%); transition: transform 0.5s ease, background 0.5s ease; z-index: 0; }
+.track:hover .bg-circle { transform: scale(1.3); }
+/* Learn more link */
+.track a.learn-more { position: absolute; bottom: 20px; left: 30px; color: #fff; font-weight: 500; font-size: 0.95rem; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; text-decoration: underline; }
+.track:hover a.learn-more { opacity: 1; transform: translateY(0); }
+/* Title & text */
+.track h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; color: #fff; position: relative; z-index: 1; }
+.track p { color: #ccc; font-size: 1rem; line-height: 1.8; position: relative; z-index: 1; }
+/* Responsive */
+@media screen and (max-width: 1024px) { .tracks { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 20px; } .track { padding: 50px 30px; } .track .bg-circle { width: 120px; height: 120px; top: -30px; right: -30px; } .track h3 { font-size: 1.4rem; } .track p { font-size: 0.95rem; } }
+@media screen and (max-width: 640px) { .tracks { grid-template-columns: 1fr; gap: 25px; padding: 0 15px; } .track { padding: 40px 20px; } .track .bg-circle { width: 100px; height: 100px; top: -20px; right: -20px; } .track h3 { font-size: 1.3rem; } .track p { font-size: 0.9rem; } }
+/* Circle color based on track */
+.track.cyber .bg-circle { background: radial-gradient(circle at center, #00cfff33, transparent 70%); } /* Sky Blue */
+.track.ai .bg-circle { background: radial-gradient(circle at center, #ff7f5033, transparent 70%); } /* Coral */
+.track.network .bg-circle { background: radial-gradient(circle at center, #f5e05033, transparent 70%); } /* Yellow */
+.track.threat .bg-circle { background: radial-gradient(circle at center, #1e90ff33, transparent 70%); } /* Blue */
+.track.cyberlaw .bg-circle { background: radial-gradient(circle at center, #f5e05033, transparent 70%); } /* Yellow */
+.track.cyber .bg-circle{background:radial-gradient(circle at center,#00cfff33,transparent 70%);} .track.ai .bg-circle{background:radial-gradient(circle at center,#ff7f5033,transparent 70%);} .track.network .bg-circle{background:radial-gradient(circle at center,#f5e05033,transparent 70%);} .track.threat .bg-circle{background:radial-gradient(circle at center,#1e90ff33,transparent 70%);} .track.cyberlaw .bg-circle{background:radial-gradient(circle at center,#f5e05033,transparent 70%);}
+.timeline-horizontal{display:flex;justify-content:space-between;position:relative;max-width:1000px;margin:0 auto;padding:0 10px;} .timeline-horizontal::before{content:'';position:absolute;top:25px;left:0;right:0;height:4px;background:linear-gradient(90deg,#ff0066,#00ffcc,#ff6600,#9966ff,#ffcc00);border-radius:2px;z-index:0;} .timeline-item{text-align:center;position:relative;z-index:1;flex:1;} .timeline-dot{width:20px;height:20px;border-radius:50%;margin:0 auto 10px;box-shadow:0 0 10px rgba(0,0,0,.5);transition:.3s;} .timeline-dot:hover{transform:scale(1.5);} .timeline-content h4{color:#fff;margin-bottom:5px;font-size:1.1rem;} .timeline-content p{color:#ccc;font-size:.95rem;}
+.pricing{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;} .pricing-card{background:#1a1a1a;padding:30px 25px;border-radius:20px;flex:1 1 220px;min-width:250px;text-align:center;transition:.3s;box-shadow:0 10px 25px rgba(0,0,0,.5);position:relative;} .pricing-card:hover{transform:translateY(-8px) scale(1.05);} .pricing-card h4{color:#ff0066;margin-bottom:10px;font-size:1.5rem;} .pricing-card .price{font-size:2rem;color:#fff;margin-bottom:15px;} .pricing-card ul.benefits{list-style:none;padding:0;margin:20px 0;color:#ccc;} .pricing-card ul.benefits li{margin-bottom:10px;position:relative;padding-left:20px;} .pricing-card ul.benefits li::before{content:"✔";position:absolute;left:0;color:#ff0066;} .pricing-card .btn{padding:10px 25px;border:none;border-radius:50px;background:#ff0066;color:#fff;cursor:pointer;font-weight:bold;transition:.3s;} .pricing-card .btn:hover{background:#e6005c;} .pricing-card.popular{border:2px solid #ff0066;} .pricing-card .ribbon{position:absolute;top:10px;right:-10px;background:#ff0066;color:#fff;padding:5px 15px;font-size:.8rem;font-weight:bold;transform:rotate(45deg);box-shadow:0 5px 15px rgba(0,0,0,.3);}
+.schedule-timeline{position:relative;max-width:1200px;margin:0 auto;padding:30px 0;overflow:hidden;} .schedule-timeline::after{content:'';position:absolute;width:4px;background:linear-gradient(to bottom,#ff0066,#00ffcc,#ff0066);top:0;bottom:0;left:50%;margin-left:-2px;border-radius:2px;box-shadow:0 0 15px rgba(255,0,102,.5);z-index:0;} .schedule-timeline .timeline-item{padding:10px 40px;position:relative;width:50%;margin:20px 0;z-index:1;} .schedule-timeline .timeline-item.left{left:0;} .schedule-timeline .timeline-item.right{left:50%;} .schedule-timeline .timeline-content{padding:20px;background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border-radius:20px;border:1px solid rgba(255,255,255,.1);box-shadow:0 8px 30px rgba(0,0,0,.4);transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s;} .schedule-timeline .timeline-content:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 15px 45px rgba(0,0,0,.6);} .schedule-timeline .timeline-content h4{color:#00ffcc;font-size:1.5rem;margin-bottom:15px;display:flex;align-items:center;gap:12px;font-weight:600;} .schedule-timeline .timeline-content h4 i{font-size:1.6rem;color:#ff0066;animation:pulse 2s infinite;} @keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}} .schedule-timeline .timeline-content p{color:#ddd;font-size:1rem;line-height:1.8;margin-top:5px;} .schedule-timeline .timeline-item::after{content:'';position:absolute;width:25px;height:25px;background-color:#ff0066;border:5px solid #0d0d0d;top:30px;border-radius:50%;z-index:2;box-shadow:0 0 20px rgba(255,0,102,.8);transition:all .3s ease;} .schedule-timeline .timeline-item.left::after{right:0;transform:translateX(17px);} .schedule-timeline .timeline-item.right::after{left:0;transform:translateX(-17px);} .schedule-button-container{text-align:center;margin-top:30px;} .see-more-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 30px;background-color:#ff0066;color:#fff;border-radius:50px;font-weight:bold;font-size:1rem;transition:background-color .3s ease,transform .3s ease;box-shadow:0 5px 20px rgba(255,0,102,.4);} .see-more-btn:hover{background-color:#e6005c;transform:translateY(-3px) scale(1.05);}
+@media screen and (max-width:768px){.schedule-timeline::after{left:31px}.schedule-timeline .timeline-item{width:100%;padding-left:70px;padding-right:25px}.schedule-timeline .timeline-item.right{left:0%}.schedule-timeline .timeline-item.left::after,.schedule-timeline .timeline-item.right::after{left:15px;transform:none}}
+.speakers-grid-vertical{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;padding:0 4%;justify-items:center;} .speaker-card-vertical{max-width:350px;width:100%;background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border-radius:15px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.4);transition:transform .3s ease,box-shadow .3s ease;border:1px solid rgba(255,255,255,.1);} .speaker-card-vertical:hover{transform:translateY(-8px);box-shadow:0 15px 45px rgba(0,0,0,.6);} .speaker-photo-vertical{width:100%;height:300px;object-fit:cover;display:block;} .speaker-content-vertical{padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;} .speaker-name-vertical{font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:5px;} .speaker-title-vertical{font-size:1rem;color:#00ffcc;font-weight:500;margin-bottom:5px;} .speaker-company-vertical{font-size:.95rem;color:#ccc;font-style:italic;margin-bottom:12px;} .speaker-session-vertical{font-weight:600;color:#ff0066;background:rgba(255,0,102,.1);padding:8px 15px;border-radius:5px;font-size:.9rem;}
+.view-more-container{text-align:center;margin-top:30px;} .view-more-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 30px;background-color:#ff0066;color:#fff;border-radius:50px;font-weight:bold;font-size:1rem;transition:background-color .3s ease,transform .3s ease;box-shadow:0 5px 20px rgba(255,0,102,.4);} .view-more-btn:hover{background-color:#e6005c;transform:translateY(-3px) scale(1.05);} @media screen and (max-width:992px){.speakers-grid-vertical{grid-template-columns:repeat(2,1fr)}} @media screen and (max-width:768px){.speakers-grid-vertical{grid-template-columns:1fr}}
+.logo-carousel{overflow:hidden;position:relative;width:100%;margin:50px 0;white-space:nowrap;-webkit-mask:linear-gradient(90deg,transparent,#fff 20%,#fff 80%,transparent);mask:linear-gradient(90deg,transparent,#fff 20%,#fff 80%,transparent);} .logo-carousel-track{display:flex;justify-content:space-around;align-items:center;gap:40px;animation:scroll-left 40s linear infinite;} .sponsor-logo{display:flex;flex-direction:column;align-items:center;text-align:center;color:#888;transition:all .3s ease;padding:10px 20px;} .sponsor-logo i{font-size:3rem;margin-bottom:10px;color:#666;transition:color .3s ease,transform .3s ease;} .sponsor-logo span{font-size:.9rem;font-weight:500;letter-spacing:.5px;color:#888;} .sponsor-logo:hover i{color:#00ffcc;transform:scale(1.1);} .sponsor-logo:hover span{color:#fff;} @keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+#contact{min-height:60vh;display:flex;flex-direction:column;justify-content:center;padding:40px 0;} .contact-container{display:flex;align-items:stretch;flex-direction:row;justify-content:center;gap:40px;padding:0 5%;} .contact-form-box,.contact-map-box{flex:1;background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border-radius:20px;padding:30px;box-shadow:0 8px 30px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;} .contact-map-box{flex:1.2;padding:18px;} .contact-form .form-group{margin-bottom:16px;} .contact-form label{display:block;font-size:1rem;color:#fff;margin-bottom:8px;font-weight:500;} .contact-form input,.contact-form textarea{width:100%;padding:12px;border:1px solid rgba(255,255,255,.2);border-radius:8px;background-color:rgba(0,0,0,.3);color:#fff;font-family:'Poppins',sans-serif;font-size:1rem;transition:all .3s ease;} .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:#00ffcc;box-shadow:0 0 10px rgba(0,255,204,.5);} .submit-btn{width:100%;padding:12px;border:none;border-radius:50px;background:#ff0066;color:#fff;font-weight:bold;font-size:1.05rem;cursor:pointer;transition:all .3s ease;display:flex;justify-content:center;align-items:center;gap:10px;} .submit-btn:hover{background:#e6005c;transform:translateY(-2px);box-shadow:0 5px 15px rgba(255,0,102,.4);} .map-title{font-size:1.6rem;color:#00ffcc;margin-bottom:8px;font-weight:600;text-align:center;} .map-address{font-size:1rem;color:#ccc;text-align:center;margin-bottom:12px;} .map-embed{border-radius:12px;overflow:hidden;flex-grow:1;} .map-embed iframe{width:100%;height:100%;border:none;} @media screen and (max-width:992px){.contact-container{flex-direction:column}.contact-form-box,.contact-map-box{flex:1}}
+#contact { overflow-x: hidden; }
+.extended-footer{background:#111;color:#ccc;font-family:inherit;width:100%;padding-top:20px;padding-bottom:0} .footer-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;padding:30px 20px;box-sizing:border-box;} .footer-column h3,.footer-column h4{color:#fff;margin-bottom:12px;font-weight:600;} .footer-about p{line-height:1.6;font-size:.95rem;} .footer-links ul{list-style:none;margin:0;padding:0;} .footer-links li{margin-bottom:10px;} .footer-links a{color:#ccc;text-decoration:none;transition:color .3s ease;} .footer-links a:hover{color:#00ffcc;} .footer-contact p{margin:8px 0;font-size:.95rem;} .footer-contact i{margin-right:8px;color:#00ffcc;} .social-icons{display:flex;gap:12px;} .social-icons a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:#222;border-radius:50%;color:#ccc;font-size:16px;transition:all .3s ease;} .social-icons a:hover{background:#00ffcc;color:#111;} .footer-bottom{border-top:1px solid #222;text-align:center;padding:12px 10px;font-size:.9rem;color:#aaa;background:#111;}
+@media (max-width:992px){.footer-container{grid-template-columns:repeat(2,1fr);gap:30px}} @media (max-width:600px){.footer-container{grid-template-columns:1fr;text-align:center}.social-icons{justify-content:center}}
+@media(max-width:992px){.hero h1{font-size:2.2rem}.hero p{font-size:1rem}} @media(max-width:768px){nav{flex-wrap:wrap;padding:15px 20px}.menu-toggle{display:block}nav ul{flex-direction:column;width:100%;display:none;margin-top:10px}nav.active ul{display:flex}nav ul li{text-align:center;padding:10px 0}.hero h1{font-size:1.8rem}} @media(max-width:480px){.hero h1{font-size:1.4rem}.hero p{font-size:.9rem}section{padding:50px 5%}}
+.custom-cursor{position:fixed;top:0;left:0;width:8px;height:8px;background:#00ffcc;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:10000;transition:transform .1s ease,background .2s ease}body.light .custom-cursor{background:#ff0066}
+#speakers .section-title{margin-bottom:30px}#speakers{padding-top:40px;padding-bottom:40px}#sponsors{padding-top:40px;padding-bottom:40px}#contact{padding-top:30px;padding-bottom:30px}footer.extended-footer{padding-top:20px}
+/* RESPONSIVE FIXES - append to end of current CSS */
+html,body{min-width:0;} img,iframe,video,object,embed{max-width:100%;height:auto;display:block} /* ensure media elements don't overflow */ 
+/* hide custom cursor on touch devices to avoid misplacement and heavy repaints */
+@media (hover:none),(pointer:coarse){.custom-cursor{display:none!important}} 
+/* make mobile nav overlay safe, scrollable and avoid horizontal overflow */
+@media (max-width:768px){nav.active ul{position:fixed;left:0;top:60px;right:0;background:rgba(17,17,17,.98);padding:18px 18px;display:flex;flex-direction:column;gap:12px;z-index:9998;max-height:calc(100vh - 60px);overflow:auto}nav ul{width:100%;box-sizing:border-box}nav ul li{width:100%} .menu-toggle{display:block}} 
+/* prevent sticky nav spacing from causing overflow on very small screens */
+@media (max-width:420px){nav{padding:12px 12px}nav h2{font-size:1.35rem}nav ul{margin-top:8px} } 
+/* HERO & CAROUSEL safe-scaling and prevent image bleed on narrow viewports */
+@media (max-width:480px){.hero{min-height:60vh;padding:18px 6px} .carousel-slide img{object-position:center center;min-width:100%;height:100%;} .hero-content{padding:0 8px}} 
+/* TIMELINE horizontal -> wrap safely on medium and small screens */
+@media (max-width:1024px){.timeline-horizontal{flex-wrap:wrap;gap:18px;max-width:100%;padding:0 12px} .timeline-horizontal::before{left:12px;right:12px} .timeline-item{flex:1 1 200px;min-width:160px;padding:8px} .timeline-content p{word-break:break-word} .timeline-dot{margin-bottom:8px}} 
+/* TIMELINE fine tune for tablets and phones */
+@media (max-width:768px){.timeline-horizontal{justify-content:flex-start} .timeline-item{flex:1 1 100%;text-align:left;padding:6px 4px} .timeline-horizontal::before{height:4px;top:40px} .timeline-item .timeline-content{padding:14px} } 
+/* SCHEDULE vertical timeline adjustments for very small screens */
+@media (max-width:600px){.schedule-timeline::after{left:24px} .schedule-timeline .timeline-item{width:100%;padding-left:64px;padding-right:20px} .schedule-timeline .timeline-item.left::after,.schedule-timeline .timeline-item.right::after{left:15px;transform:none} .schedule-timeline .timeline-content{padding:12px} } 
+/* TRACKS grid/padding tweaks on small devices to eliminate overflow while keeping original look */
+@media (max-width:640px){.tracks{grid-template-columns:1fr;gap:22px;padding:0 12px} .track{padding:34px 16px;border-radius:18px} .track .bg-circle{width:90px;height:90px;top:-18px;right:-18px} } 
+/* PRICING cards safe-wrapping on narrow devices */
+@media (max-width:500px){.pricing{flex-direction:column;align-items:stretch;padding:0 12px} .pricing-card{min-width:unset;width:100%;padding:22px 18px} .pricing-card .ribbon{right:-8px;top:8px}} 
+/* SPEAKERS grid shrink & image scaling for small screens */
+@media (max-width:992px){.speakers-grid-vertical{grid-template-columns:repeat(2,1fr);gap:20px;padding:0 3%} .speaker-photo-vertical{height:auto;max-height:300px}} 
+@media (max-width:640px){.speakers-grid-vertical{grid-template-columns:1fr;padding:0 12px} .speaker-card-vertical{max-width:100%} .speaker-photo-vertical{height:auto;max-height:220px}} 
+/* CONTACT layout: ensure map iframe scales and both boxes never overflow */
+@media (max-width:992px){.contact-container{flex-direction:column;gap:18px;padding:0 4%} .contact-form-box,.contact-map-box{width:100%;padding:18px} .map-embed iframe{height:320px}} 
+@media (max-width:420px){.map-embed iframe{height:260px}} 
+/* LOGO carousel adjustments so items compress and mask doesn't create scrollbars */
+@media (max-width:900px){.logo-carousel{ -webkit-mask:linear-gradient(90deg,transparent,#fff 8%,#fff 92%,transparent);mask:linear-gradient(90deg,transparent,#fff 8%,#fff 92%,transparent)} .logo-carousel-track{gap:18px;animation-duration:28s}} 
+@media (max-width:480px){.logo-carousel-track{gap:12px;animation-duration:20s} .sponsor-logo i{font-size:2.2rem} .sponsor-logo span{font-size:.85rem}} 
+/* FOOTER responsive: keep grid but force stacking on very small screens */
+@media (max-width:600px){.footer-container{grid-template-columns:1fr;gap:18px;padding:20px} .footer-column{text-align:center}} 
+/* GENERAL small-device padding reductions to avoid overflow while preserving look */
+@media (max-width:480px){section{padding:36px 6%} .hero p{margin-top:12px} .section-title{font-size:1.7rem}} 
+/* ULTRA-WIDE screens: center content and constrain max widths so things don't stretch oddly */
+@media (min-width:1600px){.tracks{max-width:1400px;margin:0 auto} .schedule-timeline{max-width:1400px;margin:0 auto} .footer-container{max-width:1400px;margin:0 auto} .logo-carousel{max-width:1400px;margin:40px auto}} 
+/* small fixes for text wrapping and form controls */
+input,textarea,button{min-width:0} .pricing-card ul.benefits li{word-break:break-word} .track p,.schedule-timeline .timeline-content p{hyphens:auto}
+/* Fix carousel text overflow on small screens */
+@media (max-width:768px){
+  .hero-content p,
+  .hero h1,
+  .typewriter {white-space: normal !important;word-wrap: break-word;overflow-wrap: break-word;text-align: center;}
+}
+/* 🌌 Premium 3D Neon Timeline Fix */
+@media (max-width: 768px) {
+  .timeline-horizontal {flex-direction: column;position: relative;padding-left: 30px;gap: 50px;}
+  /* Glowing vertical line */
+  .timeline-horizontal::before {content: "";position: absolute;left: 12px;top: 0;bottom: 0;width: 4px;background: linear-gradient(180deg, #0ff, #08f, #80f);box-shadow: 0 0 12px #0ff, 0 0 20px #08f;border-radius: 2px;}
+  .timeline-item {position: relative;width: 100%;display: flex;align-items: flex-start;gap: 20px;}
+  /* Glowing dots */
+  .timeline-dot {position: absolute;left: -3px;width: 20px;height: 20px;background: radial-gradient(circle, #0ff, #08f);border-radius: 50%;box-shadow: 0 0 15px #0ff, 0 0 25px #08f, inset 0 0 10px rgba(0,255,255,0.6);}
+  /* Glassmorphism effect for content */
+  .timeline-content {flex: 1;padding: 12px 16px;background: rgba(255, 255, 255, 0.05);border: 1px solid rgba(255, 255, 255, 0.15);border-radius: 12px;backdrop-filter: blur(12px);-webkit-backdrop-filter: blur(12px);box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2), inset 0 0 10px rgba(0, 255, 255, 0.15);color: #fff;font-size: 1rem;line-height: 1.4;transition: transform 0.3s ease, box-shadow 0.3s ease;}
+  .timeline-content:hover {transform: translateY(-5px) scale(1.02);box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 200, 255, 0.6);}}
+</style>
+</head>
+<body>
+
+<div class="custom-cursor"></div>
+
+<!-- NAVBAR -->
+<nav>
+  <h2>ICACS 2026</h2>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="menu-toggle" aria-hidden="true"><i class="fas fa-bars"></i></div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#cfp">Tracks</a></li>
+      <li><a href="#dates">Dates</a></li>
+      <li><a href="#registration">Registration</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#speakers">Speakers</a></li>
+      <li><a href="#sponsors">Sponsors</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <!-- <i id="theme-toggle" class="fas fa-moon" role="button" aria-label="Toggle theme"></i> -->
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="carousel" aria-hidden="true">
+    <div class="carousel-slide"><img src="photo/conf.png" alt=""></div>
+    <div class="carousel-slide"><img src="photo/amitshahingo.png" alt=""></div>
+    <div class="carousel-slide"><img src="photo/amishahji.png" alt=""></div>
+    <div class="carousel-slide"><img src="photo/nsit.png" alt=""></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="typewriter">International Conference on Advancements in Cyber Security</h1>
+    <p>march 9 - 10 2026 | Narnarayan Shastri Institute of Technology, Ahmedabad, India</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" data-aos="fade-up">
+  <h2 class="section-title">About the Conference</h2>
+  <p style="text-align:center;color:#ccc;max-width:900px;margin:0 auto;">ICACS 2026 brings together leading researchers, industry experts, and students to explore advancements in cybersecurity. The conference includes keynote talks, technical sessions, workshops, and paper presentations.</p>
+</section>
+
+<!-- TRACKS -->
+<section id="cfp" data-aos="fade-up">
+  <h2 class="section-title">Conference Tracks</h2>
+  <div class="tracks" role="list">
+    <div class="track cyber" data-aos="zoom-in" role="listitem">
+      <span class="bg-circle" aria-hidden="true"></span>
+      <h3>💻 Cybersecurity Infrastructure</h3>
+      <p>Risk Models, Compliance, and Incident Response for modern systems.</p>
+      <a href="#" class="learn-more">Learn More →</a>
+    </div>
+    <div class="track ai" data-aos="zoom-in" role="listitem">
+      <span class="bg-circle" aria-hidden="true"></span>
+      <h3>🤖 AI & Emerging Tech</h3>
+      <p>AI Threat Detection, Blockchain, and Quantum Computing.</p>
+      <a href="#" class="learn-more">Learn More →</a>
+    </div>
+    <div class="track network" data-aos="zoom-in" role="listitem">
+      <span class="bg-circle" aria-hidden="true"></span>
+      <h3>🔒 Network & Privacy</h3>
+      <p>5G & Cloud Security, GDPR, and Privacy Technologies.</p>
+      <a href="#" class="learn-more">Learn More →</a>
+    </div>
+    <div class="track threat" data-aos="zoom-in" role="listitem">
+      <span class="bg-circle" aria-hidden="true"></span>
+      <h3>🛡️ Threats & Forensics</h3>
+      <p>Malware, Ransomware, and Forensic Investigations.</p>
+      <a href="#" class="learn-more">Learn More →</a>
+    </div>
+    <div class="track cyberlaw" data-aos="zoom-in" role="listitem">
+      <span class="bg-circle" aria-hidden="true"></span>
+      <h3>⚖️ Cyberlaw & Policy</h3>
+      <p>Legal, Governance, and Digital Rights.</p>
+      <a href="#" class="learn-more">Learn More →</a>
+    </div>
+  </div>
+</section>
+
+<!-- IMPORTANT DATES -->
+<section id="dates" data-aos="fade-up">
+  <h2 class="section-title">Important Dates</h2>
+  <div class="timeline-horizontal" role="list" aria-label="Important dates timeline">
+    <div class="timeline-item" data-aos="fade-up" role="listitem">
+      <div class="timeline-dot" style="background:#ff0066;" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <h4>Submission</h4>
+        <p>25 May 2024</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-aos="fade-up" data-aos-delay="100" role="listitem">
+      <div class="timeline-dot" style="background:#00ffcc;" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <h4>Acceptance</h4>
+        <p>5 June 2024</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-aos="fade-up" data-aos-delay="200" role="listitem">
+      <div class="timeline-dot" style="background:#ff6600;" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <h4>Camera Ready</h4>
+        <p>20 June 2024</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-aos="fade-up" data-aos-delay="300" role="listitem">
+      <div class="timeline-dot" style="background:#9966ff;" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <h4>Registration</h4>
+        <p>20 June 2024</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-aos="fade-up" data-aos-delay="400" role="listitem">
+      <div class="timeline-dot" style="background:#ffcc00;" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <h4>Conference</h4>
+        <p>2-4 July 2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION -->
+<section id="registration" data-aos="fade-up">
+  <h2 class="section-title">Registration Plans</h2>
+  <div class="pricing" role="list">
+    <div class="pricing-card" data-aos="flip-left" role="listitem">
+      <h4>Student</h4>
+      <p class="price">₹500</p>
+      <ul class="benefits">
+        <li>Access to workshops</li>
+        <li>Conference kit</li>
+        <li>Certificate of Participation</li>
+      </ul>
+      <button class="btn">Register Now</button>
+    </div>
+    <div class="pricing-card popular" data-aos="flip-left" data-aos-delay="100" role="listitem">
+      <div class="ribbon">Most Popular</div>
+      <h4>Faculty</h4>
+      <p class="price">₹1000</p>
+      <ul class="benefits">
+        <li>Access to all sessions</li>
+        <li>Premium conference kit</li>
+        <li>Certificate + Feedback report</li>
+      </ul>
+      <button class="btn">Register Now</button>
+    </div>
+    <div class="pricing-card" data-aos="flip-left" data-aos-delay="200" role="listitem">
+      <h4>NSIT Student</h4>
+      <p class="price">₹200</p>
+      <ul class="benefits">
+        <li>Access to student sessions</li>
+        <li>Conference kit</li>
+        <li>Certificate of Participation</li>
+      </ul>
+      <button class="btn">Register Now</button>
+    </div>
+    <div class="pricing-card" data-aos="flip-left" data-aos-delay="300" role="listitem">
+      <h4>International</h4>
+      <p class="price">$10</p>
+      <ul class="benefits">
+        <li>Virtual Access</li>
+        <li>Conference kit delivery</li>
+        <li>Certificate by email</li>
+      </ul>
+      <button class="btn">Register Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" data-aos="fade-up">
+  <h2 class="section-title">Conference Schedule</h2>
+  <div class="schedule-timeline" aria-label="Conference schedule">
+    <div class="timeline-item left" data-aos="fade-right">
+      <div class="timeline-content">
+        <h4><i class="fas fa-bullhorn" aria-hidden="true"></i> Day 1: Keynote & Opening Sessions</h4>
+        <p><strong>9:00 AM - 10:00 AM</strong>: Inaugural Ceremony & Welcome Address</p>
+        <p><strong>10:00 AM - 12:00 PM</strong>: Keynote Address by Dr. John Doe</p>
+        <p><strong>12:00 PM - 1:00 PM</strong>: Lunch Break</p>
+        <p><strong>1:00 PM - 4:00 PM</strong>: Technical Session I: AI in Cybersecurity</p>
+      </div>
+    </div>
+    <div class="timeline-item right" data-aos="fade-left">
+      <div class="timeline-content">
+        <h4><i class="fas fa-file-alt" aria-hidden="true"></i> Day 2: Paper Presentations</h4>
+        <p><strong>9:30 AM - 12:30 PM</strong>: Parallel Paper Sessions (Tracks 1 & 2)</p>
+        <p><strong>12:30 PM - 1:30 PM</strong>: Lunch Break</p>
+        <p><strong>1:30 PM - 3:00 PM</strong>: Poster Presentations & Networking</p>
+        <p><strong>3:00 PM - 5:00 PM</strong>: Technical Session II: Network Security</p>
+      </div>
+    </div>
+    <div class="timeline-item left" data-aos="fade-right">
+      <div class="timeline-content">
+        <h4><i class="fas fa-cogs" aria-hidden="true"></i> Day 3: Workshops & Closing</h4>
+        <p><strong>9:00 AM - 11:00 AM</strong>: Workshop on Malware Analysis</p>
+        <p><strong>11:00 AM - 1:00 PM</strong>: Panel Discussion: Future of Cyber Security</p>
+        <p><strong>1:00 PM - 2:00 PM</strong>: Closing Ceremony & Award Distribution</p>
+      </div>
+    </div>
+  </div>
+  <div class="schedule-button-container">
+    <a href="#" class="see-more-btn">See More <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- SPEAKERS -->
+<section id="speakers" data-aos="fade-up">
+  <h2 class="section-title">Keynote Speakers</h2>
+  <div class="speakers-grid-vertical" role="list">
+    <div class="speaker-card-vertical" data-aos="flip-left" role="listitem">
+      <img class="speaker-photo-vertical" src="photo/princi.png" alt="Prof.(Dr.) Sailesh Iyer">
+      <div class="speaker-content-vertical">
+        <h4 class="speaker-name-vertical">Prof.(Dr.) Sailesh Iyer</h4>
+        <p class="speaker-title-vertical">Principal</p>
+        <p class="speaker-company-vertical">NSIT</p>
+        <span class="speaker-session-vertical">"The Future of AI in Business"</span>
+      </div>
+    </div>
+    <div class="speaker-card-vertical" data-aos="flip-left" data-aos-delay="100" role="listitem">
+      <img class="speaker-photo-vertical" src="photo/vp.png" alt="Dharmesh Vandra">
+      <div class="speaker-content-vertical">
+        <h4 class="speaker-name-vertical">Dharmesh Vandra</h4>
+        <p class="speaker-title-vertical">Vice- President</p>
+        <p class="speaker-company-vertical">NSIT</p>
+        <span class="speaker-session-vertical">"Digital Transformation Strategies"</span>
+      </div>
+    </div>
+    <div class="speaker-card-vertical" data-aos="flip-left" data-aos-delay="200" role="listitem">
+      <img class="speaker-photo-vertical" src="photo/vinaysir.png" alt="Vinay Aseri">
+      <div class="speaker-content-vertical">
+        <h4 class="speaker-name-vertical">Vinay Aseri</h4>
+        <p class="speaker-title-vertical">Faculty</p>
+        <p class="speaker-company-vertical">NSIT</p>
+        <span class="speaker-session-vertical">"Big Data Analytics"</span>
+      </div>
+    </div>
+  </div>
+  <div class="view-more-container">
+    <a href="#" class="view-more-btn">View More Speakers <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section id="sponsors" data-aos="fade-up">
+  <h2 class="section-title">Our Partners & Publishers</h2>
+  <p style="text-align:center;max-width:600px;margin:0 auto 24px;color:#aaa;">Proudly partnered with leading academic and industry organizations to bring you a world-class conference.</p>
+  <div class="logo-carousel" aria-hidden="true">
+    <div class="logo-carousel-track">
+      <div class="sponsor-logo"><i class="fab fa-google" aria-hidden="true"></i><span>Google Scholar</span></div>
+      <div class="sponsor-logo"><i class="fas fa-sitemap" aria-hidden="true"></i><span>IEEE</span></div>
+      <div class="sponsor-logo"><i class="fas fa-book-open" aria-hidden="true"></i><span>Springer</span></div>
+      <div class="sponsor-logo"><i class="fas fa-microchip" aria-hidden="true"></i><span>ACM</span></div>
+      <div class="sponsor-logo"><i class="fas fa-university" aria-hidden="true"></i><span>Shoolini University</span></div>
+      <div class="sponsor-logo"><i class="fab fa-microsoft" aria-hidden="true"></i><span>Microsoft</span></div>
+      <div class="sponsor-logo"><i class="fab fa-google" aria-hidden="true"></i><span>Google Scholar</span></div>
+      <div class="sponsor-logo"><i class="fas fa-sitemap" aria-hidden="true"></i><span>IEEE</span></div>
+      <div class="sponsor-logo"><i class="fas fa-book-open" aria-hidden="true"></i><span>Springer</span></div>
+      <div class="sponsor-logo"><i class="fas fa-microchip" aria-hidden="true"></i><span>ACM</span></div>
+      <div class="sponsor-logo"><i class="fas fa-university" aria-hidden="true"></i><span>Shoolini University</span></div>
+      <div class="sponsor-logo"><i class="fab fa-microsoft" aria-hidden="true"></i><span>Microsoft</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" data-aos="fade-up">
+  <h2 class="section-title">Get in Touch</h2>
+  <p style="text-align:center;max-width:600px;margin:0 auto 24px;color:#aaa;">Have a question about the conference? Fill out the form below, and we'll get back to you as soon as possible.</p>
+  <div class="contact-container">
+    <div class="contact-form-box" data-aos="fade-right">
+      <form action="#" method="POST" class="contact-form" novalidate>
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+      </form>
+    </div>
+
+    <div class="contact-map-box" data-aos="fade-left">
+      <h3 class="map-title">Conference Location</h3>
+      <p class="map-address"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Narnarayan Shastri Institute of Technology, Ahmedabad, India</p>
+      <div class="map-embed" aria-hidden="true">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.158244609245!2d72.59366717546966!3d22.89193647926557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8ebb56b85e59%3A0x8ad485026f79cab3!2sNarnarayan%20Shastri%20Institute%20of%20Technology%20-%20IFSCS!5e1!3m2!1sen!2sin!4v1758483592602!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="extended-footer" role="contentinfo">
+  <div class="footer-container">
+    <div class="footer-column footer-about">
+      <h3 class="footer-logo">ICACS 2026</h3>
+      <p>International Conference on Advancements in Cyber Security. Bringing together experts to discuss the future of digital safety.</p>
+    </div>
+    <div class="footer-column footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#registration">Registration</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-column footer-contact">
+      <h4>Contact Info</h4>
+      <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Narnarayan Shastri Institute of Technology, Ahmedabad, India</p>
+      <p><i class="fas fa-envelope" aria-hidden="true"></i> info@icacs2026.org</p>
+      <p><i class="fas fa-phone" aria-hidden="true"></i> +91-707-443-3909</p>
+    </div>
+    <div class="footer-column footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons" aria-label="Social links">
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+  <p>&copy; 2025 International Conference on Advancements in Cyber Security. Website by AasmaX. All rights reserved.</p>
+</div>
+</footer>
+
+<!-- MOBILE WARNING POPUP -->
+<div id="mobile-popup">
+  <div class="popup-content">
+    <h2>📱 Heads Up!</h2>
+    <p>For the best experience, please view this website on a larger screen.</p>
+    <button id="popup-ok">OK</button>
+  </div>
+</div>
+
+<style>
+/* POPUP OVERLAY */
+#mobile-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+/* SHOW POPUP */
+#mobile-popup.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* POPUP BOX */
+#mobile-popup .popup-content {
+  background: rgba(20,20,20,0.85);
+  border-radius: 20px;
+  padding: 30px 25px;
+  text-align: center;
+  max-width: 90%;
+  width: 350px;
+  animation: slideDown 0.5s ease;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.05) inset;
+  color: #fff;
+}
+
+/* POPUP TEXT */
+#mobile-popup .popup-content h2 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+#mobile-popup .popup-content p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+/* OK BUTTON */
+#mobile-popup .popup-content button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #00ffcc, #ff0066);
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,255,204,0.4);
+}
+
+#mobile-popup .popup-content button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,255,204,0.6);
+}
+
+/* ANIMATION */
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+</style>
+
+<script>
+// SHOW POPUP ONLY ON SMALL SCREENS
+window.addEventListener('load', () => {
+  if(window.innerWidth <= 768){
+    const popup = document.getElementById('mobile-popup');
+    popup.classList.add('show');
+
+    document.getElementById('popup-ok').addEventListener('click', () => {
+      popup.classList.remove('show');
+    });
+  }
+});
+</script>
+
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script>
+AOS.init({duration:1000,once:true});
+
+// Note: original markup doesn't include a .mySwiper container but preserving original Swiper init for compatibility if added later
+try{
+  var swiper = new Swiper(".mySwiper",{loop:true,autoplay:{delay:4000,disableOnInteraction:false},pagination:{el:".swiper-pagination",clickable:true},effect:"fade"});
+}catch(e){/* no-op if swiper container absent */}
+
+// Theme Toggle
+const toggleBtn=document.getElementById("theme-toggle");
+if(toggleBtn){
+  toggleBtn.addEventListener("click",()=>{
+    document.body.classList.toggle("light");
+    toggleBtn.classList.toggle("fa-sun");
+    toggleBtn.classList.toggle("fa-moon");
+  });
+}
+
+// Mobile Menu
+const menuToggle=document.querySelector(".menu-toggle");
+const nav=document.querySelector("nav");
+if(menuToggle && nav){
+  menuToggle.addEventListener("click",()=>{nav.classList.toggle("active");});
+}
+
+// CUSTOM DOT POINTER
+const cursor = document.querySelector('.custom-cursor');
+if(cursor){
+  document.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+}
+
+// Accessibility: allow keyboard toggling of menu and theme
+document.addEventListener('keydown', function(e){
+  if(e.key === 'm' || e.key === 'M'){ if(nav) nav.classList.toggle('active'); }
+  if(e.key === 't' || e.key === 'T'){ if(toggleBtn) toggleBtn.click(); }
+});
+
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if(window.scrollY > 20){ // scroll threshold
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+</script>
+
+</body>
+</html>
